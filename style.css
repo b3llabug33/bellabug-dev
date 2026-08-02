@@ -176,12 +176,14 @@ h1, h2, h3 { margin: 0; }
 }
 
 /* ---------- layout ---------- */
+/* three columns now: sidebar (left) / content (center) / games (right) —
+   bump max-width if you widen any column or add a 4th */
 .layout {
   position: relative;
   z-index: 2;
   display: flex;
   align-items: flex-start;
-  max-width: 900px;
+  max-width: 1140px;
   margin: 24px auto;
   gap: 20px;
   padding: 0 16px;
@@ -201,6 +203,47 @@ h1, h2, h3 { margin: 0; }
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+/* ---------- games column (right) ---------- */
+.games {
+  width: 200px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* game-card boxes are whole-box links, so restyle the <a> defaults away
+   and let .box handle the actual look */
+.game-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.1s ease;
+}
+.game-card:hover {
+  color: inherit;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.6);
+}
+
+/* cover-art placeholder — swap this for real art/screenshots per game.
+   easiest way: replace the div below with an <img>, or set
+   background-image on .game-cover in a per-game override class. */
+.game-cover {
+  height: 90px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px dashed rgba(255,255,255,0.25);
+  font-family: 'Special Elite', monospace;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #9a95ab;
 }
 
 /* ---------- window chrome ---------- */
@@ -334,11 +377,62 @@ h1, h2, h3 { margin: 0; }
 }
 .foot .flourish { margin-bottom: 8px; }
 
+/* ---------- game screen pages (games/*.html) ----------
+   Bare-bones for now — just a back link + full-bleed iframe of the live
+   game. This is the "other screen" mentioned for future custom design;
+   restyle freely, the iframe #game-frame id is the only thing the page
+   logic (if any gets added later) would rely on. */
+.game-page-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--green-dim);
+  font-family: 'Special Elite', monospace;
+  font-size: 0.85rem;
+}
+.game-page-header a {
+  text-decoration: none;
+  color: var(--green);
+}
+.game-page-header a:hover { color: var(--purple); }
+
+.game-frame-wrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  /* fills the rest of the viewport below the header */
+  height: calc(100vh - 46px);
+}
+.game-frame-wrap iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 /* ---------- responsive ---------- */
+/* mid-width: keep sidebar+content side by side, drop the games column to
+   a full-width row of 3 cards underneath instead of a 3rd skinny column */
+@media (max-width: 1020px) {
+  .layout { flex-wrap: wrap; }
+  .games {
+    width: 100%;
+    order: 3;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .games .game-card { flex: 1 1 220px; }
+}
+
 @media (max-width: 700px) {
   .layout { flex-direction: column; }
   .sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; }
   .sidebar .box { flex: 1 1 45%; }
+  .games { flex-direction: column; }
+  .games .game-card { flex: 1 1 auto; }
   .grid { grid-template-columns: 1fr; }
   .wordmark { font-size: 2.2rem; }
   .moth-left, .moth-right { display: none; }

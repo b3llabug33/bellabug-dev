@@ -182,6 +182,60 @@
 
   </main>
 
+  <!-- =====================================================================
+       GAMES COLUMN — new, matches the "speed type / flappy crow / snakes
+       and ladders" stack from the layout sketch.
+
+       Each box is a single <a> link that goes to its own page under
+       games/, which just full-screens that game in an iframe. Swap the
+       cover-art placeholder in each box for real button art whenever it's
+       ready — the whole box is the click target, so the art doesn't need
+       its own link/button wired up separately.
+
+       Add a 4th box the same way if another game gets ported later.
+       ===================================================================== -->
+  <aside class="games">
+
+    <a class="box tb-purple game-card" href="games/speed-typing.html">
+      <div class="titlebar">
+        <span class="dots"><i></i><i></i><i></i></span>
+        <span class="tbtitle">speed_type.exe</span>
+        <span class="controls">&#9633;&times;</span>
+      </div>
+      <div class="body">
+        <!-- placeholder cover art — replace with real button/thumbnail art -->
+        <div class="game-cover">speed type</div>
+        <p class="placeholder">typing speed game &mdash; click to play</p>
+      </div>
+    </a>
+
+    <a class="box tb-green game-card" href="games/flappy-crow.html">
+      <div class="titlebar">
+        <span class="dots"><i></i><i></i><i></i></span>
+        <span class="tbtitle">flappy_crow.exe</span>
+        <span class="controls">&#9633;&times;</span>
+      </div>
+      <div class="body">
+        <div class="game-cover">flappy crow</div>
+        <p class="placeholder">flappy bird but a crow &mdash; click to play</p>
+      </div>
+    </a>
+
+    <a class="box tb-purple game-card" href="games/snakes-and-ladders.html">
+      <div class="titlebar">
+        <span class="dots"><i></i><i></i><i></i></span>
+        <span class="tbtitle">snakes_ladders.exe</span>
+        <span class="controls">&#9633;&times;</span>
+      </div>
+      <div class="body">
+        <div class="game-cover">snakes &amp; ladders</div>
+        <p class="placeholder">board game, vs a friend or a bot &mdash; click to play</p>
+      </div>
+    </a>
+
+  </aside>
+  <!-- ===================================================================== -->
+
 </div>
 
 <footer class="foot">
