@@ -2,408 +2,232 @@
 * { box-sizing: border-box; }
 
 :root {
-  --green: #8fbf6b;
-  --green-dim: #3f5c40;
-  --green-deep: #16281a;
-  --purple: #b48ce0;
-  --purple-dim: #5c4a7a;
-  --purple-deep: #201830;
-  --ink: #0d0f14;
+  --bg: #110d1d;
+  --gold: #cd9d32;
+  --purple: #5b4394;
+  --green: #3a745e;
+  --green-dark: #245140;
+  --green-title: #75c3a6;
+  --cream: #fff;
   --text: #d6d4e0;
+
+  /* sidebar (mockup: purple panel, lavender section labels, teal items) */
+  --side-bg: #57335b;
+  --side-border: #664769;
+  --lavender: #ab96cd;
+
+  /* center content window (mockup: layered green/mint frame, light green body) */
+  --content-frame-1: #0f560a;
+  --content-frame-2: #388d66;
+  --content-frame-3: #436920;
+  --content-frame-4: #62d49f;
+  --content-titlebar: #78bc5b;
+  --content-titlebar-border: #66913f;
+  --content-body-bg: #a0d490;
+  --content-body-strip: #b9e2c5;
+
+  /* --font-display: set once bella gives me the font file to install */
+  --font-display: 'VT323', 'Courier New', monospace;
+  --font-body: 'Special Elite', 'Courier New', monospace;
 }
 
 html, body {
   margin: 0;
   padding: 0;
-  background:
-    radial-gradient(circle at 15% 20%, rgba(180,140,224,0.10), transparent 40%),
-    radial-gradient(circle at 85% 70%, rgba(143,191,107,0.10), transparent 45%),
-    linear-gradient(160deg, #12121c 0%, #101c17 55%, #171223 100%);
+  background: var(--bg);
   color: var(--text);
-  font-family: 'VT323', 'Courier New', monospace;
-  font-size: 18px;
-  line-height: 1.4;
+  font-family: var(--font-body);
+  min-height: 100vh;
 }
 
-a {
-  color: var(--green);
-  text-decoration: underline;
-}
-a:hover { color: var(--purple); }
-
-h1, h2, h3 { margin: 0; }
-
-/* ---------- grain + scanline + sparkle overlays ---------- */
-.grain {
-  position: fixed;
-  inset: 0;
-  z-index: 500;
-  pointer-events: none;
-  opacity: 0.06;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-}
-
-.scanlines {
-  position: fixed;
-  inset: 0;
-  z-index: 501;
-  pointer-events: none;
-  opacity: 0.18;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.35) 0px,
-    rgba(0,0,0,0.35) 1px,
-    transparent 2px,
-    transparent 3px
-  );
-}
-
-.sparkles {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.5;
-  background-image:
-    radial-gradient(1px 1px at 10% 20%, var(--purple), transparent 60%),
-    radial-gradient(1px 1px at 30% 65%, var(--green), transparent 60%),
-    radial-gradient(1px 1px at 55% 15%, var(--purple), transparent 60%),
-    radial-gradient(1px 1px at 70% 80%, var(--green), transparent 60%),
-    radial-gradient(1px 1px at 85% 35%, var(--purple), transparent 60%),
-    radial-gradient(1px 1px at 95% 60%, var(--green), transparent 60%),
-    radial-gradient(1px 1px at 40% 90%, var(--purple), transparent 60%),
-    radial-gradient(1px 1px at 20% 45%, var(--green), transparent 60%);
-  background-repeat: no-repeat;
-}
-
-/* ---------- moth motif ---------- */
-.moth {
-  width: 34px;
-  height: 26px;
-  overflow: visible;
-}
-.moth .wing {
-  fill: currentColor;
-  opacity: 0.5;
-  stroke: currentColor;
-  stroke-width: 0.6;
-}
-.moth .wing.small { opacity: 0.32; }
-.moth .body {
-  fill: currentColor;
-  opacity: 0.85;
-}
-.moth .antenna {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 0.8;
-  opacity: 0.7;
-}
-.moth-left, .moth-right {
-  position: relative;
-  color: var(--purple);
-  z-index: 2;
-}
-.moth-corner {
-  position: absolute;
-  top: 8px;
-  right: 10px;
-  color: var(--purple);
-  opacity: 0.6;
-}
-
-/* ---------- banner ---------- */
+/* ---------- header ---------- */
 .banner {
-  position: relative;
-  min-height: 160px;
-  overflow: hidden;
-  border-bottom: 3px double var(--green-dim);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 4px;
-  padding: 10px 0 0;
+  max-width: 1300px;
+  margin: 16px auto 0;
+  padding: 0 16px;
 }
 
-.banner-tile {
-  position: absolute;
-  inset: 0;
-  background:
-    repeating-linear-gradient(90deg, rgba(143,191,107,0.14) 0 1px, transparent 1px 28px),
-    repeating-linear-gradient(0deg, rgba(180,140,224,0.12) 0 1px, transparent 1px 28px),
-    linear-gradient(160deg, #1b2e2a 0%, #201830 100%);
-}
-
-.wordmark {
-  position: relative;
-  z-index: 2;
-  font-family: 'UnifrakturMaguntia', cursive;
-  font-size: 3.4rem;
-  letter-spacing: 1px;
-  background: linear-gradient(90deg, var(--green), #e4ecd8 45%, var(--purple));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  filter: drop-shadow(2px 2px 0 #000) drop-shadow(0 0 16px rgba(180, 140, 224, 0.4));
-}
-.wordmark span { -webkit-text-fill-color: var(--purple); color: var(--purple); }
-
-.flourish {
-  position: relative;
-  z-index: 2;
-  color: var(--purple);
-  font-family: 'Special Elite', monospace;
-  font-size: 0.8rem;
-  letter-spacing: 2px;
-}
-
-.plea {
-  position: relative;
-  z-index: 2;
+.logo {
+  display: block;
   width: 100%;
-  background: rgba(0,0,0,0.5);
-  border-top: 1px solid var(--green-dim);
-  border-bottom: 1px solid var(--green-dim);
-  padding: 2px 0;
-  margin-top: 6px;
-  font-family: 'Special Elite', monospace;
-  font-size: 0.85rem;
-  color: var(--green);
-  letter-spacing: 1px;
+  height: auto;
+  image-rendering: pixelated;
 }
 
-/* ---------- layout ---------- */
-/* three columns now: sidebar (left) / content (center) / games (right) —
-   bump max-width if you widen any column or add a 4th */
+/* ---------- announcement ticker ---------- */
+.ticker {
+  display: block;
+  max-width: 1300px;
+  margin: 12px auto 0;
+  padding: 0 16px;
+}
+.ticker-bar {
+  display: block;
+  background: var(--green);
+  border: 2px solid var(--cream);
+  color: #eafff2;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  padding: 6px 0;
+  text-align: center;
+}
+
+/* ---------- three-column layout ----------
+   column ratio (260:1179:290) is measured pixel-for-pixel off the mockup
+   canvas (sidebar/content/games widths) - don't swap this for eyeballed
+   pixel widths, that's what threw the proportions off last time. */
 .layout {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: flex-start;
-  max-width: 1140px;
-  margin: 24px auto;
+  display: grid;
+  grid-template-columns: 260fr 1179fr 290fr;
+  align-items: start;
+  max-width: 1300px;
+  margin: 28px auto 40px;
   gap: 20px;
   padding: 0 16px;
 }
 
+/* ---------- sidebar ----------
+   real crop of the mockup's sidebar art (assets/sidebar.png) with the
+   link labels laid on top at the exact box positions from that image -
+   no CSS-drawn borders/bevels here, so it can't drift from the source. */
 .sidebar {
-  width: 200px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+  position: relative;
 }
 
-.content {
+.sidebar-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+.side-item {
+  position: absolute;
+  left: 11.54%;
+  width: 76.54%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #eafff2;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+}
+
+/* ---------- center content window ----------
+   aspect-ratio is the box's real width:height from the mockup (1179:573)
+   so it stays the right size regardless of how much placeholder text is
+   inside it - don't let content length drive this box's height. */
+.content-window {
+  min-width: 0;
+  aspect-ratio: 1179 / 573;
+  display: flex;
+  flex-direction: column;
+  background: var(--content-body-bg);
+  border: 3px solid var(--content-frame-1);
+  box-shadow:
+    0 0 0 3px var(--content-frame-2),
+    0 0 0 15px var(--content-frame-3),
+    0 0 0 18px var(--content-frame-4),
+    4px 4px 0 18px rgba(0,0,0,0.6);
+  margin: 18px 22px 22px 18px;
+}
+
+.content-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: var(--content-titlebar);
+  border-bottom: 3px solid var(--content-titlebar-border);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  color: #0d0f14;
+}
+
+.close-badge {
+  display: block;
+  height: 1.4em;
+  width: auto;
+  margin-left: auto;
+  image-rendering: pixelated;
+}
+
+.content-body {
+  position: relative;
   flex: 1;
+  min-height: 0;
+  padding: 22px 22px 30px 30px;
+  color: #16311c;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+.content-body p { margin: 0; }
+.content-body::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  bottom: 8px;
+  width: 10px;
+  background: var(--content-body-strip);
+}
+.content-body::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  height: 10px;
+  background: var(--content-body-strip);
+}
+
+/* ---------- games ---------- */
+.games {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
 }
 
-/* ---------- games column (right) ---------- */
-.games {
-  width: 200px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-/* game-card boxes are whole-box links, so restyle the <a> defaults away
-   and let .box handle the actual look */
 .game-card {
   display: block;
-  text-decoration: none;
-  color: inherit;
+  line-height: 0;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.6);
   transition: transform 0.1s ease;
 }
 .game-card:hover {
-  color: inherit;
   transform: translate(-2px, -2px);
   box-shadow: 6px 6px 0 rgba(0,0,0,0.6);
 }
 
-/* cover-art placeholder — swap this for real art/screenshots per game.
-   easiest way: replace the div below with an <img>, or set
-   background-image on .game-cover in a per-game override class. */
 .game-cover {
-  height: 90px;
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border: 1px dashed rgba(255,255,255,0.25);
-  font-family: 'Special Elite', monospace;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #9a95ab;
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
 }
 
-/* ---------- window chrome ---------- */
-.box {
-  position: relative;
-  background: var(--ink);
-  border: 1px solid var(--green-dim);
-  box-shadow: 4px 4px 0 rgba(0,0,0,0.6);
-  overflow: hidden;
-}
-
-.titlebar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 5px 8px;
-  font-family: 'Special Elite', monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.5px;
-  color: #0d0f14;
-  border-bottom: 1px solid rgba(0,0,0,0.4);
-}
-
-.dots {
-  display: flex;
-  gap: 3px;
-}
-.dots i {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: rgba(0,0,0,0.35);
-  display: inline-block;
-}
-
-.tbtitle {
-  flex: 1;
-  text-align: left;
-}
-
-.controls {
-  font-size: 0.9rem;
-  opacity: 0.6;
-}
-
-.body {
-  padding: 14px 16px;
-}
-
-.body p { margin: 0; }
-
-/* titlebar color variants */
-.tb-green .titlebar { background: linear-gradient(90deg, #7aad5c, #a9d488); }
-.tb-purple .titlebar { background: linear-gradient(90deg, #9d78c9, #c7a8ea); }
-.tb-mix .titlebar { background: linear-gradient(90deg, #7aad5c, #9d78c9); }
-
-.tb-green { border-color: var(--green-dim); }
-.tb-purple { border-color: var(--purple-dim); }
-.tb-mix { border-color: var(--purple-dim); }
-
-/* ---------- sidebar specifics ---------- */
-.counter {
-  display: flex;
-  gap: 3px;
-  justify-content: center;
-}
-.counter span {
-  background: #000;
-  color: #4dff4d;
-  font-family: 'VT323', monospace;
-  font-size: 1.3rem;
-  padding: 2px 5px;
-  border: 1px solid #2a3a2a;
-}
-
-.nav-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.nav-list li {
-  padding: 3px 0;
-  border-bottom: 1px dotted rgba(255,255,255,0.08);
-}
-.nav-list li:last-child { border-bottom: none; }
-.nav-list a {
-  text-decoration: none;
-  color: var(--text);
-}
-.nav-list a:hover {
-  color: var(--purple);
-  padding-left: 4px;
-}
-
-/* ---------- content ---------- */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-
-.card .body { position: relative; }
-
-.tag {
-  display: inline-block;
-  font-family: 'Special Elite', monospace;
-  font-size: 0.7rem;
-  color: var(--purple);
-  border: 1px solid var(--purple-dim);
-  padding: 1px 6px;
-  border-radius: 10px;
-  margin-bottom: 8px;
-}
-.tb-green .tag, .tb-mix .tag { color: var(--green); border-color: var(--green-dim); }
-
-.placeholder {
-  margin: 0;
-  color: #9a95ab;
-  font-family: 'Special Elite', monospace;
-  font-size: 0.85rem;
-}
-
-/* ---------- footer ---------- */
-.foot {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 10px 10px 30px;
-  font-size: 0.75rem;
-  color: #6a6478;
-}
-.foot .flourish { margin-bottom: 8px; }
-
-/* ---------- game screen pages (games/*.html) ----------
-   Bare-bones for now — just a back link + full-bleed iframe of the live
-   game. This is the "other screen" mentioned for future custom design;
-   restyle freely, the iframe #game-frame id is the only thing the page
-   logic (if any gets added later) would rely on. */
+/* ---------- game screen pages (games/*.html) ---------- */
 .game-page-header {
-  position: relative;
-  z-index: 2;
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 10px 16px;
-  border-bottom: 1px solid var(--green-dim);
-  font-family: 'Special Elite', monospace;
+  border-bottom: 1px solid var(--green-dark);
+  font-family: var(--font-body);
   font-size: 0.85rem;
 }
 .game-page-header a {
   text-decoration: none;
-  color: var(--green);
+  color: var(--green-title);
 }
 .game-page-header a:hover { color: var(--purple); }
 
 .game-frame-wrap {
-  position: relative;
-  z-index: 2;
   width: 100%;
-  /* fills the rest of the viewport below the header */
   height: calc(100vh - 46px);
 }
 .game-frame-wrap iframe {
@@ -414,26 +238,15 @@ h1, h2, h3 { margin: 0; }
 }
 
 /* ---------- responsive ---------- */
-/* mid-width: keep sidebar+content side by side, drop the games column to
-   a full-width row of 3 cards underneath instead of a 3rd skinny column */
-@media (max-width: 1020px) {
-  .layout { flex-wrap: wrap; }
-  .games {
-    width: 100%;
-    order: 3;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
+@media (max-width: 1060px) {
+  .layout { grid-template-columns: 1fr; }
+  .games { flex-direction: row; flex-wrap: wrap; }
   .games .game-card { flex: 1 1 220px; }
 }
 
-@media (max-width: 700px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; }
-  .sidebar .box { flex: 1 1 45%; }
-  .games { flex-direction: column; }
-  .games .game-card { flex: 1 1 auto; }
-  .grid { grid-template-columns: 1fr; }
-  .wordmark { font-size: 2.2rem; }
-  .moth-left, .moth-right { display: none; }
+@media (max-width: 500px) {
+  .logo { max-width: 100%; }
+  .ticker { font-size: 0.9rem; }
+  .side-item { font-size: 0.65rem; }
+  .content-window { margin: 12px; box-shadow: 0 0 0 3px var(--content-frame-2), 0 0 0 10px var(--content-frame-3), 0 0 0 13px var(--content-frame-4), 4px 4px 0 13px rgba(0,0,0,0.6); }
 }
