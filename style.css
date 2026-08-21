@@ -1,6 +1,19 @@
 /* ---------- reset / base ---------- */
 * { box-sizing: border-box; }
 
+@font-face {
+  font-family: 'November';
+  src: url('assets/fonts/november.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bitmgothic';
+  src: url('assets/fonts/bitmgothic.woff') format('woff'),
+       url('assets/fonts/bitmgothic.ttf') format('truetype');
+  font-display: swap;
+}
+
 :root {
   --bg: #110d1d;
   --gold: #cd9d32;
@@ -26,8 +39,7 @@
   --content-body-bg: #a0d490;
   --content-body-strip: #b9e2c5;
 
-  /* --font-display: set once bella gives me the font file to install */
-  --font-display: 'VT323', 'Courier New', monospace;
+  --font-display: 'November', 'VT323', 'Courier New', monospace;
   --font-body: 'Special Elite', 'Courier New', monospace;
 }
 
@@ -111,8 +123,8 @@ html, body {
   justify-content: center;
   color: #eafff2;
   text-decoration: none;
-  font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-family: 'Bitmgothic', var(--font-body);
+  font-size: 0.95rem;
 }
 
 /* ---------- center content window ----------
@@ -143,6 +155,13 @@ html, body {
   border-bottom: 3px solid var(--content-titlebar-border);
   font-family: var(--font-display);
   font-size: 1rem;
+  letter-spacing: 0.5px;
+  color: #0d0f14;
+}
+
+.content-titletext {
+  font-family: 'Bitmgothic', var(--font-display);
+  font-size: 1.1rem;
   letter-spacing: 0.5px;
   color: #0d0f14;
 }
@@ -193,6 +212,7 @@ html, body {
 }
 
 .game-card {
+  position: relative;
   display: block;
   line-height: 0;
   box-shadow: 4px 4px 0 rgba(0,0,0,0.6);
@@ -208,6 +228,23 @@ html, body {
   width: 100%;
   height: auto;
   image-rendering: pixelated;
+}
+
+/* label sits in the blank title strip at the top of each box's art -
+   top/height per card match that strip's exact proportion in the source */
+.game-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0d0f14;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  line-height: 1.1;
+  letter-spacing: 0.5px;
 }
 
 /* ---------- game screen pages (games/*.html) ---------- */
@@ -247,6 +284,7 @@ html, body {
 @media (max-width: 500px) {
   .logo { max-width: 100%; }
   .ticker { font-size: 0.9rem; }
-  .side-item { font-size: 0.65rem; }
+  .side-item { font-size: 0.78rem; }
+  .game-label { font-size: 0.85rem; }
   .content-window { margin: 12px; box-shadow: 0 0 0 3px var(--content-frame-2), 0 0 0 10px var(--content-frame-3), 0 0 0 13px var(--content-frame-4), 4px 4px 0 13px rgba(0,0,0,0.6); }
 }
