@@ -54,6 +54,7 @@ html, body {
 
 /* ---------- header ---------- */
 .banner {
+  position: relative;
   max-width: 1300px;
   margin: 16px auto 0;
   padding: 0 16px;
@@ -66,8 +67,42 @@ html, body {
   image-rendering: pixelated;
 }
 
+.header-bat-banner,
+.header-love-computer,
+.header-rainwater,
+.header-vangoh {
+  position: absolute;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+.header-bat-banner {
+  left: 81.37%;
+  top: 8.9%;
+  width: 8.28%;
+  height: 11.24%;
+}
+.header-love-computer {
+  left: 81.37%;
+  top: 23.08%;
+  width: 8.34%;
+  height: 11.83%;
+}
+.header-rainwater {
+  left: 89.82%;
+  top: 7.69%;
+  width: 8.28%;
+  height: 50.89%;
+}
+.header-vangoh {
+  left: 90.49%;
+  top: 58.58%;
+  width: 2.0%;
+  height: 21.3%;
+}
+
 /* ---------- announcement ticker ---------- */
 .ticker {
+  position: relative;
   display: block;
   max-width: 1300px;
   margin: 12px auto 0;
@@ -83,6 +118,15 @@ html, body {
   letter-spacing: 1px;
   padding: 6px 0;
   text-align: center;
+}
+.ticker-moth {
+  position: absolute;
+  left: 97.5%;
+  top: 4%;
+  width: 2.9%;
+  height: 92%;
+  image-rendering: pixelated;
+  pointer-events: none;
 }
 
 /* ---------- three-column layout ----------
@@ -127,11 +171,23 @@ html, body {
   font-size: 0.95rem;
 }
 
+.hanging-butterfly {
+  position: absolute;
+  left: 111.2%;
+  top: 59%;
+  width: 109.6%;
+  height: 43.6%;
+  z-index: 3;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
 /* ---------- center content window ----------
    aspect-ratio is the box's real width:height from the mockup (1179:573)
    so it stays the right size regardless of how much placeholder text is
    inside it - don't let content length drive this box's height. */
 .content-window {
+  position: relative;
   min-width: 0;
   aspect-ratio: 1179 / 573;
   display: flex;
@@ -183,7 +239,7 @@ html, body {
   font-family: var(--font-body);
   font-size: 0.95rem;
 }
-.content-body p { margin: 0; }
+.content-body p { margin: 0; padding-right: 16%; }
 .content-body::before {
   content: "";
   position: absolute;
@@ -201,6 +257,26 @@ html, body {
   bottom: 8px;
   height: 10px;
   background: var(--content-body-strip);
+}
+
+.content-butterfly {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 13.8%;
+  height: 32.7%;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+.color-palette {
+  position: absolute;
+  left: 57.6%;
+  width: 42.4%;
+  top: calc(100% + 8%);
+  height: 14.2%;
+  image-rendering: pixelated;
+  pointer-events: none;
 }
 
 /* ---------- games ---------- */
@@ -272,6 +348,21 @@ html, body {
   width: 100%;
   height: 100%;
   border: none;
+}
+
+/* ---------- coming-soon pages (art.html, etc.) ---------- */
+.coming-soon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 46px);
+  text-align: center;
+}
+.coming-soon-text {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  color: var(--green-title);
 }
 
 /* ---------- responsive ---------- */
