@@ -70,11 +70,35 @@ html, body {
 .header-bat-banner,
 .header-love-computer,
 .header-rainwater,
-.header-vangoh {
+.header-vangoh,
+.header-crows-stamp,
+.header-pantone-stamp,
+.header-dvd-icon,
+.header-purple-rules,
+.header-undertale,
+.header-blinking-cat,
+.header-dont-rush-me,
+.header-space-pixel,
+.header-twilight,
+.header-fluttershy,
+.header-love-dolphins,
+.header-buggin {
   position: absolute;
   image-rendering: pixelated;
   pointer-events: none;
 }
+.header-crows-stamp { left: 61.48%; top: 8.88%; width: 5.5%; height: 33.14%; }
+.header-pantone-stamp { left: 67.15%; top: 8.88%; width: 5.5%; height: 33.14%; }
+.header-dvd-icon { left: 58.81%; top: 42.6%; width: 5.22%; height: 53.25%; }
+.header-purple-rules { left: 64.37%; top: 43.79%; width: 8.34%; height: 11.83%; }
+.header-undertale { left: 64.37%; top: 56.8%; width: 8.34%; height: 11.83%; }
+.header-blinking-cat { left: 64.37%; top: 69.82%; width: 8.34%; height: 11.83%; }
+.header-dont-rush-me { left: 64.37%; top: 82.84%; width: 8.34%; height: 11.83%; }
+.header-space-pixel { left: 72.98%; top: 9.47%; width: 7.84%; height: 83.43%; }
+.header-twilight { left: 81.37%; top: 37.87%; width: 8.34%; height: 12.43%; }
+.header-fluttershy { left: 81.37%; top: 52.66%; width: 8.34%; height: 11.83%; }
+.header-love-dolphins { left: 81.37%; top: 67.46%; width: 8.34%; height: 11.83%; }
+.header-buggin { left: 81.32%; top: 82.25%; width: 8.34%; height: 11.83%; }
 .header-bat-banner {
   left: 81.37%;
   top: 8.9%;
@@ -124,6 +148,15 @@ html, body {
   left: 97.5%;
   top: 4%;
   width: 2.9%;
+  height: 92%;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+.ticker-pink-computer {
+  position: absolute;
+  left: 1.3%;
+  top: 4%;
+  width: 2.1%;
   height: 92%;
   image-rendering: pixelated;
   pointer-events: none;
@@ -265,6 +298,26 @@ html, body {
   top: 0;
   width: 13.8%;
   height: 32.7%;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+.content-beetle {
+  position: absolute;
+  left: 85.4%;
+  top: 57.2%;
+  width: 12.1%;
+  height: 34.4%;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+.content-fish {
+  position: absolute;
+  left: 95.3%;
+  top: 85.3%;
+  width: 4.2%;
+  height: 9.2%;
   image-rendering: pixelated;
   pointer-events: none;
 }
