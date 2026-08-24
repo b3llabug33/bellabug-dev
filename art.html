@@ -75,6 +75,10 @@
       <img class="art-thumb" src="assets/art/art14.jpg" alt="art piece 14" loading="lazy">
       <img class="art-thumb" src="assets/art/art15.jpg" alt="art piece 15" loading="lazy">
     </div>
+
+    <div class="art-scrollbar-track" id="art-scrollbar-track">
+      <img class="art-scrollbar-thumb" id="art-scrollbar-thumb" src="assets/art-scrollbar-thumb.png" alt="">
+    </div>
   </main>
 
   <aside class="games">
@@ -115,6 +119,65 @@
   overlay.addEventListener('click', () => overlay.classList.remove('active'));
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') overlay.classList.remove('active');
+  });
+
+  // functional custom scrollbar, styled from the mockup's own pixel-art track/thumb
+  const gallery = document.querySelector('.art-gallery');
+  const track = document.getElementById('art-scrollbar-track');
+  const thumb = document.getElementById('art-scrollbar-thumb');
+  const MIN_THUMB = 24;
+
+  function updateThumb() {
+    const trackH = track.clientHeight;
+    const contentH = gallery.scrollHeight;
+    const viewH = gallery.clientHeight;
+    if (contentH <= viewH + 1) {
+      thumb.style.display = 'none';
+      return;
+    }
+    thumb.style.display = 'block';
+    const thumbH = Math.max(MIN_THUMB, trackH * (viewH / contentH));
+    const maxTop = trackH - thumbH;
+    const scrollFrac = gallery.scrollTop / (contentH - viewH);
+    thumb.style.height = thumbH + 'px';
+    thumb.style.top = (scrollFrac * maxTop) + 'px';
+  }
+
+  gallery.addEventListener('scroll', updateThumb);
+  window.addEventListener('resize', updateThumb);
+  document.querySelectorAll('.art-thumb').forEach(img => img.addEventListener('load', updateThumb));
+  updateThumb();
+
+  let dragging = false, dragStartY = 0, dragStartScrollTop = 0;
+  thumb.addEventListener('mousedown', e => {
+    dragging = true;
+    dragStartY = e.clientY;
+    dragStartScrollTop = gallery.scrollTop;
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    const trackH = track.clientHeight;
+    const thumbH = thumb.offsetHeight;
+    const scrollableTrack = trackH - thumbH;
+    const scrollableContent = gallery.scrollHeight - gallery.clientHeight;
+    if (scrollableTrack <= 0) return;
+    const deltaY = e.clientY - dragStartY;
+    gallery.scrollTop = dragStartScrollTop + deltaY * (scrollableContent / scrollableTrack);
+  });
+  window.addEventListener('mouseup', () => { dragging = false; });
+
+  track.addEventListener('mousedown', e => {
+    if (e.target === thumb) return;
+    const rect = track.getBoundingClientRect();
+    const clickY = e.clientY - rect.top;
+    const thumbH = thumb.offsetHeight;
+    const trackH = track.clientHeight;
+    const scrollableTrack = trackH - thumbH;
+    if (scrollableTrack <= 0) return;
+    const targetTop = Math.min(Math.max(0, clickY - thumbH / 2), scrollableTrack);
+    const scrollableContent = gallery.scrollHeight - gallery.clientHeight;
+    gallery.scrollTop = (targetTop / scrollableTrack) * scrollableContent;
   });
 </script>
 
