@@ -471,14 +471,33 @@ html, body {
   width: 2.603%;
   height: 83.31%;
 }
+/* CSS-drawn instead of a stretched sprite - an <img> scaled to an
+   arbitrary JS-computed height produced ugly nearest-neighbor scaling
+   artifacts (repeated/doubled border bands) since the thumb height
+   changes continuously with scroll content; solid fill + border caps
+   scale cleanly to any height. Colors sampled from the original baked
+   thumb graphic. */
 .art-scrollbar-thumb {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
+  box-sizing: border-box;
+  background: #267446;
+  border-top: 3px solid #bdd670;
+  border-bottom: 3px solid #bdd670;
   cursor: grab;
-  image-rendering: pixelated;
   user-select: none;
+}
+.art-scrollbar-thumb::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 3px;
+  height: 36%;
+  background: #18370d;
 }
 .art-scrollbar-thumb:active { cursor: grabbing; }
 
