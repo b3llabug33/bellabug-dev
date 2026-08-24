@@ -52,12 +52,29 @@
 
   <main class="art-window">
     <img class="art-window-bg" src="assets/art-window-bg.png" alt="">
-    <p class="art-coming-soon">art coming soon !!</p>
     <img class="art-rainbow-dash" src="assets/art-rainbow-dash.png" alt="">
     <img class="art-mantis" src="assets/art-mantis.gif" alt="">
     <img class="art-bug art-bug-black" src="assets/art-bug-black.gif" alt="">
     <img class="art-bug art-bug-brown" src="assets/art-bug-brown.gif" alt="">
     <img class="art-bug art-bug-green" src="assets/art-bug-green.gif" alt="">
+
+    <div class="art-gallery">
+      <img class="art-thumb" src="assets/art/art01.jpg" alt="art piece 1" loading="lazy">
+      <img class="art-thumb" src="assets/art/art02.jpg" alt="art piece 2" loading="lazy">
+      <img class="art-thumb" src="assets/art/art03.jpg" alt="art piece 3" loading="lazy">
+      <img class="art-thumb" src="assets/art/art04.jpg" alt="art piece 4" loading="lazy">
+      <img class="art-thumb" src="assets/art/art05.jpg" alt="art piece 5" loading="lazy">
+      <img class="art-thumb" src="assets/art/art06.jpg" alt="art piece 6" loading="lazy">
+      <img class="art-thumb" src="assets/art/art07.jpg" alt="art piece 7" loading="lazy">
+      <img class="art-thumb" src="assets/art/art08.jpg" alt="art piece 8" loading="lazy">
+      <img class="art-thumb" src="assets/art/art09.jpg" alt="art piece 9" loading="lazy">
+      <img class="art-thumb" src="assets/art/art10.jpg" alt="art piece 10" loading="lazy">
+      <img class="art-thumb" src="assets/art/art11.jpg" alt="art piece 11" loading="lazy">
+      <img class="art-thumb" src="assets/art/art12.jpg" alt="art piece 12" loading="lazy">
+      <img class="art-thumb" src="assets/art/art13.jpg" alt="art piece 13" loading="lazy">
+      <img class="art-thumb" src="assets/art/art14.jpg" alt="art piece 14" loading="lazy">
+      <img class="art-thumb" src="assets/art/art15.jpg" alt="art piece 15" loading="lazy">
+    </div>
   </main>
 
   <aside class="games">
@@ -80,6 +97,26 @@
   </aside>
 
 </div>
+
+<div class="lightbox-overlay" id="lightbox">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  const overlay = document.getElementById('lightbox');
+  const overlayImg = document.getElementById('lightbox-img');
+  document.querySelectorAll('.art-thumb').forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      overlayImg.src = thumb.src;
+      overlayImg.alt = thumb.alt;
+      overlay.classList.add('active');
+    });
+  });
+  overlay.addEventListener('click', () => overlay.classList.remove('active'));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') overlay.classList.remove('active');
+  });
+</script>
 
 </body>
 </html>

@@ -54,7 +54,7 @@ html, body {
   color: var(--text);
   font-family: var(--font-body);
   min-height: 100vh;
-  cursor: url('assets/cursor.png') 4 4, auto;
+  cursor: url('assets/cursor.png') 2 2, auto;
 }
 
 /* ---------- header ---------- */
@@ -439,17 +439,56 @@ html, body {
 .art-bug-brown { left: 90.765%; top: 2.140%; width: 3.947%; height: 7.275%; }
 .art-bug-green { left: 94.795%; top: 2.140%; width: 3.947%; height: 7.275%; }
 
-.art-coming-soon {
+/* content-safe rectangle inside art-window-bg.png, measured from the
+   pixel frame itself (body area, stops short of the decorative scrollbar
+   track on the right) - see [[project_bellabug_dev_website]] gotcha about
+   measuring the real frame rather than eyeballing the flattened mockup. */
+.art-gallery {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 45%;
-  margin: 0;
-  text-align: center;
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  letter-spacing: 1px;
-  color: var(--art-titlebar-bg-2);
+  left: 1.6%;
+  top: 11.41%;
+  width: 94.13%;
+  height: 86.45%;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
+  padding: 12px;
+  box-sizing: border-box;
+  scrollbar-width: none;
+}
+.art-gallery::-webkit-scrollbar { display: none; }
+
+.art-thumb {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  cursor: zoom-in;
+  border: 2px solid #86ad4e;
+  border-radius: 2px;
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+.art-thumb:hover {
+  transform: scale(1.04);
+  border-color: #dff0c0;
+}
+
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background: rgba(10, 20, 8, 0.88);
+  cursor: zoom-out;
+  z-index: 1000;
+}
+.lightbox-overlay.active { display: flex; }
+.lightbox-overlay img {
+  max-width: 90vw;
+  max-height: 90vh;
+  box-shadow: 0 0 0 4px #dff0c0, 0 8px 30px rgba(0, 0, 0, 0.6);
 }
 
 /* ---------- responsive ---------- */
