@@ -29,16 +29,6 @@
   --side-border: #664769;
   --lavender: #ab96cd;
 
-  /* center content window (mockup: layered green/mint frame, light green body) */
-  --content-frame-1: #0f560a;
-  --content-frame-2: #388d66;
-  --content-frame-3: #436920;
-  --content-frame-4: #62d49f;
-  --content-titlebar: #78bc5b;
-  --content-titlebar-border: #66913f;
-  --content-body-bg: #a0d490;
-  --content-body-strip: #b9e2c5;
-
   /* art gallery window (art.html) - frame itself is a real pixel crop now,
      this is just the placeholder-text color to match its titlebar area */
   --art-titlebar-bg-2: #3d8a4a;
@@ -221,120 +211,22 @@ html, body {
 }
 
 /* ---------- center content window ----------
-   aspect-ratio is the box's real width:height from the mockup (1179:573)
-   so it stays the right size regardless of how much placeholder text is
-   inside it - don't let content length drive this box's height. */
+   real pixel crop straight out of homeScreenRedo.aseprite (1217x735),
+   same approach as art-window-bg.png - the frame/gradient/scrollbar
+   looks and the badge/card decorations are all baked into one image
+   rather than CSS-redrawn. */
 .content-window {
   position: relative;
   min-width: 0;
-  aspect-ratio: 1179 / 573;
-  display: flex;
-  flex-direction: column;
-  background: var(--content-body-bg);
-  border: 3px solid var(--content-frame-1);
-  box-shadow:
-    0 0 0 3px var(--content-frame-2),
-    0 0 0 15px var(--content-frame-3),
-    0 0 0 18px var(--content-frame-4),
-    4px 4px 0 18px rgba(0,0,0,0.6);
+  aspect-ratio: 1217 / 735;
   margin: 18px 22px 22px 18px;
 }
 
-.content-titlebar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 10px;
-  background: var(--content-titlebar);
-  border-bottom: 3px solid var(--content-titlebar-border);
-  font-family: var(--font-display);
-  font-size: 1rem;
-  letter-spacing: 0.5px;
-  color: #0d0f14;
-}
-
-.content-titletext {
-  font-family: 'Bitmgothic', var(--font-display);
-  font-size: 1.1rem;
-  letter-spacing: 0.5px;
-  color: #0d0f14;
-}
-
-.close-badge {
+.content-window-bg {
   display: block;
-  height: 1.4em;
-  width: auto;
-  margin-left: auto;
+  width: 100%;
+  height: auto;
   image-rendering: pixelated;
-}
-
-.content-body {
-  position: relative;
-  flex: 1;
-  min-height: 0;
-  padding: 22px 22px 30px 30px;
-  color: #16311c;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-}
-.content-body p { margin: 0; padding-right: 16%; }
-.content-body::before {
-  content: "";
-  position: absolute;
-  left: 8px;
-  top: 8px;
-  bottom: 8px;
-  width: 10px;
-  background: var(--content-body-strip);
-}
-.content-body::after {
-  content: "";
-  position: absolute;
-  left: 8px;
-  right: 8px;
-  bottom: 8px;
-  height: 10px;
-  background: var(--content-body-strip);
-}
-
-.content-butterfly {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 13.8%;
-  height: 32.7%;
-  image-rendering: pixelated;
-  pointer-events: none;
-}
-
-.content-beetle {
-  position: absolute;
-  left: 85.4%;
-  top: 57.2%;
-  width: 12.1%;
-  height: 34.4%;
-  image-rendering: pixelated;
-  pointer-events: none;
-}
-
-.content-fish {
-  position: absolute;
-  left: 95.3%;
-  top: 85.3%;
-  width: 4.2%;
-  height: 9.2%;
-  image-rendering: pixelated;
-  pointer-events: none;
-}
-
-.color-palette {
-  position: absolute;
-  left: 57.6%;
-  width: 42.4%;
-  top: calc(100% + 8%);
-  height: 14.2%;
-  image-rendering: pixelated;
-  pointer-events: none;
 }
 
 /* ---------- games ---------- */
@@ -544,5 +436,5 @@ html, body {
   .ticker { font-size: 0.9rem; }
   .side-item { font-size: 0.78rem; }
   .game-label { font-size: 0.85rem; }
-  .content-window { margin: 12px; box-shadow: 0 0 0 3px var(--content-frame-2), 0 0 0 10px var(--content-frame-3), 0 0 0 13px var(--content-frame-4), 4px 4px 0 13px rgba(0,0,0,0.6); }
+  .content-window { margin: 12px; }
 }
