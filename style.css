@@ -229,6 +229,53 @@ html, body {
   image-rendering: pixelated;
 }
 
+.content-intro {
+  position: absolute;
+  left: 2.5%;
+  top: 12%;
+  width: 75%;
+  margin: 0;
+  font-family: 'November', var(--font-display);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  color: #16311c;
+}
+
+/* real animated GIFs swapped in over the baked-in static crops they
+   matched exactly in homeScreenRedo.aseprite - see
+   [[project_bellabug_dev_website]] for how each was identified/measured. */
+.content-programmer-badge {
+  position: absolute;
+  left: 81.841%;
+  top: 13.741%;
+  width: 12.325%;
+  height: 2.721%;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+.content-miku-row {
+  position: absolute;
+  left: 81.758%;
+  top: 20.544%;
+  width: 12.325%;
+  height: 2.721%;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+.content-card {
+  position: absolute;
+  left: 86.031%;
+  width: 8.135%;
+  height: 7.619%;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+.content-card-fish { top: 24.082%; }
+.content-card-crossing { top: 32.381%; }
+
 /* ---------- games ---------- */
 .games {
   min-width: 0;
