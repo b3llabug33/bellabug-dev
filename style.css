@@ -462,8 +462,8 @@ html, body {
 
 /* real scrollbar track/thumb, positioned over the same column the mockup
    baked a decorative one into (art-window-bg.png had its thumb graphic
-   patched out - see assets/art-scrollbar-thumb.png - so this is the only
-   thumb now, driven by gallery scroll state instead of being static). */
+   patched out - see [[project_bellabug_dev_website]] - so this is the
+   only thumb now, driven by gallery scroll state instead of being static). */
 .art-scrollbar-track {
   position: absolute;
   left: 96.003%;
@@ -484,8 +484,7 @@ html, body {
   width: 100%;
   box-sizing: border-box;
   background: #267446;
-  border-top: 3px solid #bdd670;
-  border-bottom: 3px solid #bdd670;
+  border: 3px solid #bdd670;
   cursor: grab;
   user-select: none;
 }
