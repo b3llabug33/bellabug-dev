@@ -59,21 +59,21 @@
     <img class="art-bug art-bug-green" src="assets/art-bug-green.gif" alt="">
 
     <div class="art-gallery">
-      <img class="art-thumb" src="assets/art/art01.jpg" alt="art piece 1" loading="lazy">
-      <img class="art-thumb" src="assets/art/art02.jpg" alt="art piece 2" loading="lazy">
-      <img class="art-thumb" src="assets/art/art03.jpg" alt="art piece 3" loading="lazy">
-      <img class="art-thumb" src="assets/art/art04.jpg" alt="art piece 4" loading="lazy">
-      <img class="art-thumb" src="assets/art/art05.jpg" alt="art piece 5" loading="lazy">
-      <img class="art-thumb" src="assets/art/art06.jpg" alt="art piece 6" loading="lazy">
-      <img class="art-thumb" src="assets/art/art07.jpg" alt="art piece 7" loading="lazy">
-      <img class="art-thumb" src="assets/art/art08.jpg" alt="art piece 8" loading="lazy">
-      <img class="art-thumb" src="assets/art/art09.jpg" alt="art piece 9" loading="lazy">
-      <img class="art-thumb" src="assets/art/art10.jpg" alt="art piece 10" loading="lazy">
-      <img class="art-thumb" src="assets/art/art11.jpg" alt="art piece 11" loading="lazy">
-      <img class="art-thumb" src="assets/art/art12.jpg" alt="art piece 12" loading="lazy">
-      <img class="art-thumb" src="assets/art/art13.jpg" alt="art piece 13" loading="lazy">
-      <img class="art-thumb" src="assets/art/art14.jpg" alt="art piece 14" loading="lazy">
-      <img class="art-thumb" src="assets/art/art15.jpg" alt="art piece 15" loading="lazy">
+      <img class="art-thumb" src="assets/art/art01.jpg" alt="art piece 1">
+      <img class="art-thumb" src="assets/art/art02.jpg" alt="art piece 2">
+      <img class="art-thumb" src="assets/art/art03.jpg" alt="art piece 3">
+      <img class="art-thumb" src="assets/art/art04.jpg" alt="art piece 4">
+      <img class="art-thumb" src="assets/art/art05.jpg" alt="art piece 5">
+      <img class="art-thumb" src="assets/art/art06.jpg" alt="art piece 6">
+      <img class="art-thumb" src="assets/art/art07.jpg" alt="art piece 7">
+      <img class="art-thumb" src="assets/art/art08.jpg" alt="art piece 8">
+      <img class="art-thumb" src="assets/art/art09.jpg" alt="art piece 9">
+      <img class="art-thumb" src="assets/art/art10.jpg" alt="art piece 10">
+      <img class="art-thumb" src="assets/art/art11.jpg" alt="art piece 11">
+      <img class="art-thumb" src="assets/art/art12.jpg" alt="art piece 12">
+      <img class="art-thumb" src="assets/art/art13.jpg" alt="art piece 13">
+      <img class="art-thumb" src="assets/art/art14.jpg" alt="art piece 14">
+      <img class="art-thumb" src="assets/art/art15.jpg" alt="art piece 15">
     </div>
 
     <div class="art-scrollbar-track" id="art-scrollbar-track">
@@ -145,6 +145,7 @@
 
   gallery.addEventListener('scroll', updateThumb);
   window.addEventListener('resize', updateThumb);
+  document.querySelector('.art-window-bg').addEventListener('load', updateThumb);
   document.querySelectorAll('.art-thumb').forEach(img => img.addEventListener('load', updateThumb));
   updateThumb();
 
