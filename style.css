@@ -267,14 +267,14 @@ html, body {
 
 .content-card {
   position: absolute;
-  left: 86.031%;
-  width: 8.135%;
-  height: 7.619%;
+  left: 86.360%;
+  width: 7.477%;
+  height: 6.531%;
   image-rendering: pixelated;
   pointer-events: none;
 }
-.content-card-fish { top: 24.082%; }
-.content-card-crossing { top: 32.381%; }
+.content-card-fish { top: 24.626%; }
+.content-card-crossing { top: 32.925%; }
 
 /* ---------- games ---------- */
 .games {
