@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>bellabug.dev</title>
+<title>blog — bellabug.dev</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=VT323&family=Special+Elite&display=swap" rel="stylesheet">
@@ -38,26 +38,29 @@
 
 <div class="layout">
 
-  <!-- point these hrefs at real sections/pages as you add them -->
   <aside class="sidebar">
     <img class="sidebar-art" src="assets/sidebar.png" alt="">
     <a class="side-item" style="top:12.68%;height:7.12%" href="https://github.com/b3llabug33" target="_blank" rel="noopener">github</a>
     <a class="side-item" style="top:22.9%;height:7.12%" href="https://instagram.com/b3llabug" target="_blank" rel="noopener">instagram</a>
     <a class="side-item" style="top:33.0%;height:7.12%" href="art.html">art</a>
-    <a class="side-item" style="top:55.37%;height:6.99%" href="#">home</a>
+    <a class="side-item" style="top:55.37%;height:6.99%" href="index.html">home</a>
     <a class="side-item" style="top:65.46%;height:6.99%" href="#">devlog</a>
-    <a class="side-item" style="top:75.29%;height:7.12%" href="blog.html">blog</a>
+    <a class="side-item side-item-active" style="top:75.29%;height:7.12%" href="blog.html">blog</a>
     <a class="side-item" style="top:85.12%;height:7.12%" href="#">random</a>
     <img class="hanging-butterfly" src="assets/big-butterfly.gif" alt="">
   </aside>
 
-  <main class="content-window">
-    <img class="content-window-bg" src="assets/content-window-bg.png" alt="">
-    <p class="content-intro">Hello !! Welcome to my website my name is Bella and I am a Junior Software Engineering major at Arizona State University!</p>
-    <img class="content-programmer-badge" src="assets/programmer-blinkie.gif" alt="">
-    <img class="content-miku-row" src="assets/miku-blinkie.gif" alt="">
-    <img class="content-card content-card-fish" src="assets/lps-fish-stamp.gif" alt="">
-    <img class="content-card content-card-crossing" src="assets/animal-crossing-stamp.gif" alt="">
+  <main class="art-window">
+    <img class="art-window-bg" src="assets/art-window-bg.png" alt="">
+    <span class="window-title">~ blog ~</span>
+
+    <div class="window-scroll-body blog-list" id="blog-list">
+      <p class="blog-empty">loading posts…</p>
+    </div>
+
+    <div class="art-scrollbar-track" id="scrollbar-track">
+      <div class="art-scrollbar-thumb" id="scrollbar-thumb"></div>
+    </div>
   </main>
 
   <aside class="games">
@@ -80,6 +83,15 @@
   </aside>
 
 </div>
+
+<script src="blog/blog.js"></script>
+<script>
+  var listEl = document.getElementById('blog-list');
+  var track = document.getElementById('scrollbar-track');
+  var thumb = document.getElementById('scrollbar-thumb');
+  var refreshBar = bellabugBlog.attachScrollbar(listEl, track, thumb);
+  bellabugBlog.renderList(listEl, refreshBar);
+</script>
 
 </body>
 </html>

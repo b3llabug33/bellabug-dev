@@ -231,9 +231,9 @@ html, body {
 
 .content-intro {
   position: absolute;
-  left: 2.5%;
+  left: 6%;
   top: 12%;
-  width: 75%;
+  width: 71%;
   margin: 0;
   font-family: 'November', var(--font-display);
   font-size: 1.1rem;
@@ -469,6 +469,213 @@ html, body {
   max-width: 90vw;
   max-height: 90vh;
   box-shadow: 0 0 0 4px #dff0c0, 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* ---------- blog (blog.html / blog-post.html) ----------
+   reuses the art-window pixel frame (assets/art-window-bg.png) + its
+   functional scrollbar. the list and the single-post view both sit in the
+   same content-safe rectangle the art gallery uses, measured off that png. */
+
+/* title text laid into the frame's baked-in titlebar strip */
+.window-title {
+  position: absolute;
+  left: 5%;
+  top: 4.6%;
+  font-family: 'November', var(--font-display);
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 1px;
+  color: #eafff2;
+  text-shadow: 1px 1px 0 #1c3d17;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* shared scroll box — sits inside the frame's body area, pulled in a little
+   from the pixel bevel + the decorative scrollbar column on the right.
+   display mode + padding come from .blog-list / .post-view */
+.window-scroll-body {
+  position: absolute;
+  left: 2.1%;
+  top: 11.41%;
+  width: 91.6%;
+  height: 84.5%;
+  overflow-y: auto;
+  box-sizing: border-box;
+  background-color: #18370d;
+  scrollbar-width: none;
+}
+.window-scroll-body::-webkit-scrollbar { display: none; }
+
+/* ---- post list: a grid of square cards, one per post, wraps as posts
+   are added (same idea as the art gallery grid) ---- */
+.blog-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 14px;
+  padding: 18px;
+  align-content: start;
+}
+
+.blog-empty {
+  grid-column: 1 / -1;
+  margin: 8px 4px;
+  font-family: var(--font-body);
+  color: #b9d29a;
+}
+
+.post-card {
+  aspect-ratio: 1 / 1;
+  display: block;
+  padding: 14px 15px;
+  overflow: hidden;
+  text-decoration: none;
+  background: #21470f;
+  border: 2px solid #86ad4e;
+  border-radius: 2px;
+  transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+}
+.post-card:hover {
+  transform: translate(-2px, -2px);
+  border-color: #dff0c0;
+  background: #2b5a14;
+}
+
+.post-card-date {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+  color: #9cc06f;
+}
+.post-card-title {
+  display: -webkit-box;
+  margin-top: 4px;
+  font-family: 'November', var(--font-display);
+  font-size: 1.05rem;
+  line-height: 1.22;
+  color: #f2ffe4;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.post-card-excerpt {
+  display: -webkit-box;
+  margin-top: 7px;
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: #cfe4b0;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ---- single post ---- */
+.post-view {
+  padding: 20px 24px 28px;
+}
+
+.post-back {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  color: #9cc06f;
+  text-decoration: none;
+}
+.post-back:hover { color: #f2ffe4; }
+
+.post-title {
+  margin: 0;
+  font-family: 'November', var(--font-display);
+  font-size: 1.9rem;
+  line-height: 1.15;
+  color: #f2ffe4;
+}
+.post-meta {
+  margin: 4px 0 18px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  color: #9cc06f;
+}
+
+/* rendered-markdown typography */
+.post-body {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: #e2efce;
+}
+.post-body h1,
+.post-body h2,
+.post-body h3,
+.post-body h4 {
+  font-family: 'November', var(--font-display);
+  line-height: 1.2;
+  color: #f2ffe4;
+  margin: 1.4em 0 0.5em;
+}
+.post-body h1 { font-size: 1.6rem; }
+.post-body h2 { font-size: 1.3rem; }
+.post-body h3 { font-size: 1.1rem; }
+.post-body h4 { font-size: 1rem; }
+.post-body p { margin: 0 0 1em; }
+.post-body a { color: #a9dc8f; text-decoration: underline; }
+.post-body a:hover { color: #f2ffe4; }
+.post-body ul,
+.post-body ol { margin: 0 0 1em; padding-left: 1.5em; }
+.post-body li { margin: 0.25em 0; }
+.post-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1em 0;
+  border: 2px solid #86ad4e;
+  border-radius: 2px;
+}
+.post-body blockquote {
+  margin: 1em 0;
+  padding: 0.4em 0 0.4em 1em;
+  border-left: 3px solid #86ad4e;
+  color: #cbe0ac;
+  font-style: italic;
+}
+.post-body code {
+  font-family: var(--font-display);
+  font-size: 0.92em;
+  background: #0f2708;
+  padding: 1px 5px;
+  border-radius: 2px;
+}
+.post-body pre {
+  margin: 1em 0;
+  padding: 12px 14px;
+  background: #0f2708;
+  border: 1px solid #3c5a1e;
+  border-radius: 2px;
+  overflow-x: auto;
+}
+.post-body pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #d8ecbf;
+}
+.post-body hr {
+  border: none;
+  border-top: 2px dashed #4d7326;
+  margin: 1.6em 0;
+}
+
+/* current-page sidebar link */
+.side-item-active {
+  color: #ffe9a8;
+  text-shadow: 0 0 6px rgba(255, 233, 168, 0.5);
 }
 
 /* ---------- responsive ---------- */
