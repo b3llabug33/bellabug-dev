@@ -655,7 +655,7 @@ html, body {
 .post-card-thumb {
   display: block;
   width: calc(100% + 30px);
-  height: 45%;
+  height: 38%;
   margin: -14px -15px 10px -15px;
   object-fit: cover;
   flex-shrink: 0;
@@ -663,6 +663,7 @@ html, body {
 
 .post-card-date {
   display: block;
+  flex-shrink: 0;
   min-width: 0;
   font-family: var(--font-body);
   font-size: 0.7rem;
@@ -671,6 +672,7 @@ html, body {
 }
 .post-card-title {
   display: -webkit-box;
+  flex-shrink: 0;
   min-width: 0;
   margin-top: 4px;
   font-family: 'November', var(--font-display);
@@ -683,6 +685,7 @@ html, body {
 }
 .post-card-excerpt {
   display: -webkit-box;
+  flex-shrink: 0;
   min-width: 0;
   margin-top: 7px;
   font-family: var(--font-body);
