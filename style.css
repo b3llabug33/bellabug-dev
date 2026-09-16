@@ -232,7 +232,7 @@ html, body {
 .content-intro {
   position: absolute;
   left: 6%;
-  top: 12%;
+  top: 15%;
   width: 71%;
   margin: 0;
   font-family: 'November', var(--font-display);
@@ -275,6 +275,86 @@ html, body {
 }
 .content-card-fish { top: 24.626%; }
 .content-card-crossing { top: 32.925%; }
+
+/* ---------- recent posts widget (index.html, games column) ----------
+   real pixel crop from recentBlogPosts.aseprite (395x456) - sits in the
+   games flex column so it matches the game cards' width exactly. */
+.recent-window {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 395 / 456;
+}
+
+.recent-window-bg {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+.recent-window-title {
+  position: absolute;
+  left: 0;
+  top: 6%;
+  width: 100%;
+  text-align: center;
+  font-family: 'November', var(--font-display);
+  font-size: 0.8rem;
+  line-height: 1;
+  letter-spacing: 1px;
+  color: #f2ffe4;
+  text-shadow: 1px 1px 0 #3a1a5c;
+  pointer-events: none;
+}
+
+.recent-list {
+  position: absolute;
+  left: 5.3%;
+  top: 19%;
+  width: 89.4%;
+  height: 76%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+.recent-post {
+  display: block;
+  padding: 6px 8px;
+  text-decoration: none;
+  background: rgba(20, 0, 50, 0.25);
+  border: 2px solid #d9b8ff;
+  border-radius: 2px;
+  transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+}
+.recent-post:hover {
+  transform: translate(-2px, -2px);
+  border-color: #f2ffe4;
+  background: rgba(20, 0, 50, 0.4);
+}
+
+.recent-post-date {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  letter-spacing: 0.5px;
+  color: #e4d3ff;
+}
+.recent-post-title {
+  display: block;
+  margin-top: 2px;
+  font-family: 'November', var(--font-display);
+  font-size: 0.8rem;
+  line-height: 1.2;
+  color: #f2ffe4;
+}
+
+.recent-empty {
+  margin: 0;
+  font-family: var(--font-body);
+  color: #e4d3ff;
+}
 
 /* ---------- games ---------- */
 .games {
@@ -682,7 +762,8 @@ html, body {
 @media (max-width: 1060px) {
   .layout { grid-template-columns: 1fr; }
   .games { flex-direction: row; flex-wrap: wrap; }
-  .games .game-card { flex: 1 1 220px; }
+  .games .game-card,
+  .games .recent-window { flex: 1 1 220px; }
 }
 
 @media (max-width: 500px) {

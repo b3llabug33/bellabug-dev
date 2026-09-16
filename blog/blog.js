@@ -291,10 +291,37 @@
       .catch(function () { fail("couldn’t load that post."); });
   }
 
+  /* ---- widget: last N posts, used on index.html under the intro ----- */
+  function renderRecent(el, count) {
+    fetch("blog/posts.json", { cache: "no-cache" })
+      .then(function (r) { return r.json(); })
+      .then(function (posts) {
+        posts.sort(function (a, b) {
+          return (b.date || "").localeCompare(a.date || "");
+        });
+        var recent = posts.slice(0, count);
+        if (!recent.length) {
+          el.innerHTML = '<p class="recent-empty">no posts yet !!</p>';
+          return;
+        }
+        el.innerHTML = recent.map(function (p) {
+          return '<a class="recent-post" href="blog-post.html?slug=' +
+            encodeURIComponent(p.slug) + '">' +
+            '<span class="recent-post-date">' + esc(fmtDate(p.date)) + "</span>" +
+            '<span class="recent-post-title">' + esc(p.title || p.slug) + "</span>" +
+            "</a>";
+        }).join("");
+      })
+      .catch(function () {
+        el.innerHTML = '<p class="recent-empty">couldn’t load posts.</p>';
+      });
+  }
+
   window.bellabugBlog = {
     mdToHtml: mdToHtml,
     attachScrollbar: attachScrollbar,
     renderList: renderList,
-    renderPost: renderPost
+    renderPost: renderPost,
+    renderRecent: renderRecent
   };
 })();
