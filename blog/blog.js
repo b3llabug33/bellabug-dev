@@ -234,6 +234,9 @@
           listEl.innerHTML = posts.map(function (p) {
             return '<a class="post-card" href="blog-post.html?slug=' +
               encodeURIComponent(p.slug) + '">' +
+              (p.image
+                ? '<img class="post-card-thumb" src="' + esc(p.image) + '" alt="">'
+                : "") +
               '<span class="post-card-date">' + esc(fmtDate(p.date)) + "</span>" +
               '<span class="post-card-title">' + esc(p.title || p.slug) + "</span>" +
               (p.excerpt
@@ -307,9 +310,13 @@
         el.innerHTML = recent.map(function (p) {
           return '<a class="recent-post" href="blog-post.html?slug=' +
             encodeURIComponent(p.slug) + '">' +
+            (p.image
+              ? '<img class="recent-post-thumb" src="' + esc(p.image) + '" alt="">'
+              : "") +
+            '<span class="recent-post-text">' +
             '<span class="recent-post-date">' + esc(fmtDate(p.date)) + "</span>" +
             '<span class="recent-post-title">' + esc(p.title || p.slug) + "</span>" +
-            "</a>";
+            "</span></a>";
         }).join("");
       })
       .catch(function () {
