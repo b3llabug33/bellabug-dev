@@ -210,6 +210,16 @@ html, body {
   pointer-events: none;
 }
 
+/* ---------- center column ----------
+   holds the content window plus the recent-posts widget stacked below
+   it; this is what occupies the grid's middle cell now. */
+.main-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
 /* ---------- center content window ----------
    real pixel crop straight out of homeScreenRedo.aseprite (1217x735),
    same approach as art-window-bg.png - the frame/gradient/scrollbar
@@ -219,7 +229,7 @@ html, body {
   position: relative;
   min-width: 0;
   aspect-ratio: 1217 / 735;
-  margin: 18px 22px 22px 18px;
+  margin: 18px 22px 0 18px;
 }
 
 .content-window-bg {
@@ -276,13 +286,15 @@ html, body {
 .content-card-fish { top: 24.626%; }
 .content-card-crossing { top: 32.925%; }
 
-/* ---------- recent posts widget (index.html, games column) ----------
-   real pixel crop from recentBlogPosts.aseprite (395x456) - sits in the
-   games flex column so it matches the game cards' width exactly. */
+/* ---------- recent posts widget (index.html, under the intro) ----------
+   real pixel crop from recentBlogPosts.aseprite (395x456) - right-aligned
+   under the content window so its right edge lines up with that box's. */
 .recent-window {
   position: relative;
-  width: 100%;
+  align-self: flex-end;
+  width: min(100%, 260px);
   aspect-ratio: 395 / 456;
+  margin: 0 22px 22px 0;
 }
 
 .recent-window-bg {
@@ -762,8 +774,7 @@ html, body {
 @media (max-width: 1060px) {
   .layout { grid-template-columns: 1fr; }
   .games { flex-direction: row; flex-wrap: wrap; }
-  .games .game-card,
-  .games .recent-window { flex: 1 1 220px; }
+  .games .game-card { flex: 1 1 220px; }
 }
 
 @media (max-width: 500px) {
