@@ -11,5 +11,12 @@
     "date": "2026-09-16",
     "excerpt": "my rainbow stag beetle, 2 months old and already living her best nocturnal life.",
     "image": "blog/images/orion-2.jpg"
+  },
+  {
+    "slug": "dreamworld-devlog-1",
+    "title": "dreamWorld devlog #1 !!",
+    "date": "2026-10-09",
+    "excerpt": "the cozy PS1-style game i've been making: a character creator built with code, a mushroom village, and elden ring style fights.",
+    "image": "blog/images/dreamworld-face.jpg"
   }
 ]
