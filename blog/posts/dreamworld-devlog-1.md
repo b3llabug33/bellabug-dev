@@ -1,6 +1,6 @@
 ![dreamWorld](blog/images/dreamworld-face.jpg)
 
-I have been working on a new game called **dreamWorld** !! It is a cozy 3D game with a PS1 look, made in Unity. The plan is for it to become an online world where you make your own character, level up by doing quests, and decorate your own home base. It is still early, but it is finally starting to feel like a real game so I wanted to share some progress.
+I have been working on a new game called **dreamWorld** !! It is a cozy 3D game with a retro look, made in Unity. The plan is for it to become an online world where you make your own character, level up by doing quests, and decorate your own home base. It is still early, but it is finally starting to feel like a real game so I wanted to share some progress.
 
 ## make you
 
@@ -28,7 +28,7 @@ Everyone starts at level 0. Defeating monsters gives you XP and coins, and every
 
 ![level up](blog/images/dreamworld-level-up.jpg)
 
-Since the game is set in a dream, dying does not say "you died". You wake up at home instead, and you lose any coins you did not save on your home computer.
+When you die you respawn at your home base, and you lose any coins you did not save on your home computer.
 
 ![you woke up](blog/images/dreamworld-woke-up.jpg)
 
